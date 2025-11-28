@@ -1,87 +1,193 @@
-# Welcome to React Router!
+# Todo App
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern, responsive todo management application built with React, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+### 🚀 Core Functionality
+
+- **Create, Read, Update, Delete** todos with rich metadata
+- **Advanced filtering and searching** by status, priority, category, and text
+- **Multiple view modes**: Card view and Table view
+- **Bulk operations** for managing multiple todos
+- **Real-time statistics** and progress tracking
+- **Responsive design** for all device sizes
+
+### 💾 Data Management
+
+- **Mock Data on First Load**: The app automatically loads with sample data for immediate testing
+- **Local Storage Persistence**: All changes are automatically saved to browser's local storage
+- **Dynamic State Management**: Seamless transition from mock data to user-generated content
+- **Data Reset Options**: Easy reset to mock data or clear all todos
+
+### 🎨 User Experience
+
+- **Modern UI/UX** with Tailwind CSS
+- **Toast notifications** for user feedback
+- **Confirmation dialogs** for destructive actions
+- **Keyboard shortcuts** and accessibility features
+- **Dark/light mode** support (coming soon)
+
+## Data Flow
+
+### First Load
+
+1. App checks local storage for existing data
+2. If no data exists, loads mock data and saves it to local storage
+3. User sees sample todos immediately
+
+### User Interactions
+
+1. All CRUD operations update local state
+2. Changes are automatically persisted to local storage
+3. Data persists between browser sessions
+4. Mock data can be restored at any time
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+
 ### Installation
 
-Install the dependencies:
+```bash
+# Clone the repository
+git clone <repository-url>
+cd todo-reactrouterv7-tailwind-cloudflare
+
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+```
+
+### Build for Production
 
 ```bash
-npm install
+pnpm build
+pnpm start
 ```
 
-### Development
+## Development
 
-Start the development server with HMR:
+### Available Scripts
 
 ```bash
-npm run dev
+# Development
+pnpm dev              # Start development server
+pnpm build            # Build for production
+pnpm start            # Start production server
+
+# Code Quality
+pnpm typecheck        # Type check TypeScript files
+pnpm lint             # Run ESLint
+pnpm lint:fix         # Fix ESLint errors automatically
+pnpm format           # Format code with Prettier
+pnpm format:check     # Check code formatting
+
+# Testing
+pnpm test             # Run tests
+pnpm test:ui          # Run tests with UI
+pnpm test:coverage    # Run tests with coverage
+pnpm test:watch       # Run tests in watch mode
+
+# Validation
+pnpm validate         # Run all checks (typecheck, lint, format, test)
 ```
 
-Your application will be available at `http://localhost:5173`.
+### Developer Experience Features
 
-## Building for Production
+This project includes comprehensive developer experience tooling:
 
-Create a production build:
+- **ESLint**: Code linting with React, TypeScript, and React Router rules
+- **Prettier**: Automatic code formatting
+- **TypeScript**: Strict type checking
+- **Vitest**: Fast unit testing with React Testing Library
+- **Husky**: Git hooks for pre-commit checks
+- **lint-staged**: Run linters on staged files only
+- **EditorConfig**: Consistent editor settings
+- **VS Code**: Optimized settings and recommended extensions
 
-```bash
-npm run build
-```
+### Pre-commit Hooks
 
-## Deployment
+The project uses Husky to automatically:
+- Run ESLint on staged files
+- Format code with Prettier
+- Prevent commits with linting errors
 
-### Docker Deployment
+### VS Code Setup
 
-To build and run using Docker:
+1. Install recommended extensions (VS Code will prompt you)
+2. Settings are automatically configured for:
+   - Format on save
+   - ESLint auto-fix
+   - TypeScript workspace version
 
-```bash
-docker build -t my-app .
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed development guidelines.
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+├── common/
+│   ├── components/     # Reusable UI components
+│   ├── data/          # Mock data and data sources
+│   ├── hooks/         # Custom React hooks
+│   └── types/         # TypeScript type definitions
+├── routes/            # Page components and routing
+└── welcome/           # Landing page assets
 ```
 
-## Styling
+## Key Components
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+### useTodos Hook
 
----
+The central data management hook that provides:
 
-Built with ❤️ using React Router.
+- Todo CRUD operations
+- Filtering and search
+- Local storage persistence
+- Mock data management
+- Statistics calculation
+
+### TodoDataInfo Component
+
+Shows current data status and provides:
+
+- Data source indication (mock vs local)
+- Reset to mock data functionality
+- Clear all todos option
+- User guidance information
+
+## Data Schema
+
+Each todo includes:
+
+- **Basic Info**: Title, description, category
+- **Time Management**: Start/end times, reminders
+- **Organization**: Tags, priority, status
+- **Attachments**: Files and links
+- **User Context**: User information and avatars
+- **Metadata**: Creation/update timestamps
+
+## Browser Support
+
+- Chrome 80+
+- Firefox 75+
+- Safari 13+
+- Edge 80+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## License
+
+MIT License - see LICENSE file for details
